@@ -68,11 +68,30 @@ app.add_middleware(
 # Include v1 API routes
 app.include_router(api_router, prefix=API_V1_PREFIX)
 
+# Include Chatbot API router fallback
+try:
+    from nexaura.backend.api.chatbot_api import router as chatbot_router
+    app.include_router(chatbot_router)
+except Exception as e:
+    logger.warning("Optional chatbot_router not loaded: %s", e)
+
+# Mount Frontend Static Files if available
+from pathlib import Path
+from fastapi.staticfiles import StaticFiles
+
+frontend_dir = Path(__file__).resolve().parent.parent.parent / "frontend"
+if frontend_dir.exists():
+    app.mount("/demo", StaticFiles(directory=str(frontend_dir), html=True), name="demo")
+    logger.info("Mounted Demo Frontend UI at /demo")
+
 
 @app.get("/", include_in_schema=False)
 async def root():
-    """Redirect root to interactive API documentation."""
+    """Redirect root to Demo Frontend UI or API documentation."""
+    if frontend_dir.exists():
+        return RedirectResponse(url="/demo")
     return RedirectResponse(url="/docs")
+
 
 
 @app.get("/health", response_model=HealthResponse, tags=["System & Statistics"])
