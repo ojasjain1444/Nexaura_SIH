@@ -1,0 +1,212 @@
+{
+  "__init__.py": {
+    "mtime": 1789620762.4701002,
+    "seen": 1789664145.518959,
+    "ast_hash": "c2f1dbd271052d2fe2c57cf5c170ab3a",
+    "semantic_hash": ""
+  },
+  "__main__.py": {
+    "mtime": 1789634067.9684114,
+    "seen": 1789664145.5189667,
+    "ast_hash": "d1a905f0535060315ba483dcd192a5ab",
+    "semantic_hash": ""
+  },
+  "clients/__init__.py": {
+    "mtime": 1789620764.4885707,
+    "seen": 1789664145.5189703,
+    "ast_hash": "90deef8b96ca477ca46ca9d2373aeb41",
+    "semantic_hash": ""
+  },
+  "clients/bis_lims.py": {
+    "mtime": 1789594757.0178235,
+    "seen": 1789664145.5189722,
+    "ast_hash": "7751594abb887ab586c33f2447c6bfb3",
+    "semantic_hash": ""
+  },
+  "clients/bis_standards.py": {
+    "mtime": 1789634008.040925,
+    "seen": 1789664145.518974,
+    "ast_hash": "10290aa3bf9ab5e88622645d668fc008",
+    "semantic_hash": ""
+  },
+  "clients/http_client.py": {
+    "mtime": 1789594716.8561082,
+    "seen": 1789664145.5189755,
+    "ast_hash": "7e0a8024450d69e11f45b6d2cc0e5eae",
+    "semantic_hash": ""
+  },
+  "config.py": {
+    "mtime": 1789635064.6620371,
+    "seen": 1789664145.5189772,
+    "ast_hash": "9b9420b3e13a542f770d059f01b4c206",
+    "semantic_hash": ""
+  },
+  "data/bis_standards.json": {
+    "mtime": 1789625341.1759367,
+    "seen": 1789664145.5189786,
+    "ast_hash": "fd77d6185dcd8626a1ebe0cf87354e4a",
+    "semantic_hash": ""
+  },
+  "exporters/__init__.py": {
+    "mtime": 1789620921.0214317,
+    "seen": 1789664145.5189798,
+    "ast_hash": "43598a4b8fe0d8d9eacce3601f968167",
+    "semantic_hash": ""
+  },
+  "exporters/csv_exporter.py": {
+    "mtime": 1789620890.1722832,
+    "seen": 1789664145.5189815,
+    "ast_hash": "16840f0885c05e49a0bdea6c9f3a494f",
+    "semantic_hash": ""
+  },
+  "exporters/json_exporter.py": {
+    "mtime": 1789620910.898455,
+    "seen": 1789664145.5189826,
+    "ast_hash": "148e18855ddf944ea142db9b16d35f6c",
+    "semantic_hash": ""
+  },
+  "parsers/__init__.py": {
+    "mtime": 1789620861.9730642,
+    "seen": 1789664145.518984,
+    "ast_hash": "1da681eb6bb1563e28bb7a5044797177",
+    "semantic_hash": ""
+  },
+  "parsers/text_utils.py": {
+    "mtime": 1789620851.4182582,
+    "seen": 1789664145.5189857,
+    "ast_hash": "bf0215fb708892bb0049ec09b014fb50",
+    "semantic_hash": ""
+  },
+  "pipeline.py": {
+    "mtime": 1789634050.3093684,
+    "seen": 1789664145.5189872,
+    "ast_hash": "9166dfc336b46ca53825900e3ff2fffa",
+    "semantic_hash": ""
+  },
+  "pipeline_utils.py": {
+    "mtime": 1789625307.89299,
+    "seen": 1789664145.5189888,
+    "ast_hash": "bcaffaa9d07c402115fc85295c70a0fe",
+    "semantic_hash": ""
+  },
+  "rag/__init__.py": {
+    "mtime": 1789620976.612899,
+    "seen": 1789664145.51899,
+    "ast_hash": "d2586aff9820a4a456813382c962ed6d",
+    "semantic_hash": ""
+  },
+  "rag/chunker.py": {
+    "mtime": 1789620963.751845,
+    "seen": 1789664145.5189917,
+    "ast_hash": "f4453c505e652596db3cddaa74e84cbd",
+    "semantic_hash": ""
+  },
+  "schemas.py": {
+    "mtime": 1789622490.507815,
+    "seen": 1789664145.5189931,
+    "ast_hash": "e86f230b186b2869ad2b01fcb88f161e",
+    "semantic_hash": ""
+  },
+  "storage/__init__.py": {
+    "mtime": 1789620823.5791008,
+    "seen": 1789664145.5189943,
+    "ast_hash": "c0f9a54a97f1d21bf5852702c182f951",
+    "semantic_hash": ""
+  },
+  "storage/db.py": {
+    "mtime": 1789625139.73426,
+    "seen": 1789664145.518996,
+    "ast_hash": "ba9f3d0a6eccb654919d37796cd26682",
+    "semantic_hash": ""
+  },
+  "storage/download_and_index_free_pdfs.py": {
+    "mtime": 1789638699.2091713,
+    "seen": 1789664145.5189974,
+    "ast_hash": "91bdafe770dd39fda43a8ce00e1c9c9c",
+    "semantic_hash": ""
+  },
+  "storage/migrate_to_mongo.py": {
+    "mtime": 1789635094.734609,
+    "seen": 1789664145.5189993,
+    "ast_hash": "280a2dcedbf63d620697c06962866a72",
+    "semantic_hash": ""
+  },
+  "storage/mongo_db.py": {
+    "mtime": 1789635086.5566154,
+    "seen": 1789664145.5190012,
+    "ast_hash": "f2cf04a2e73bd33d8631899fb81a02d6",
+    "semantic_hash": ""
+  },
+  "storage/populate_full_mongo.py": {
+    "mtime": 1789635476.8562052,
+    "seen": 1789664145.5190027,
+    "ast_hash": "b9d66d3eabcfe9e680154244f454b9aa",
+    "semantic_hash": ""
+  },
+  "storage/sync_pdfs_and_expand_data.py": {
+    "mtime": 1789639083.4416988,
+    "seen": 1789664145.519004,
+    "ast_hash": "043bc446c485e1dc2482ee44e9cd8ed5",
+    "semantic_hash": ""
+  },
+  "tests/__init__.py": {
+    "mtime": 1789621251.3738163,
+    "seen": 1789664145.5190058,
+    "ast_hash": "57fea244e9fac83d7f7db95ab46aa141",
+    "semantic_hash": ""
+  },
+  "tests/test_parsers.py": {
+    "mtime": 1789621162.8427887,
+    "seen": 1789664145.5190074,
+    "ast_hash": "26825bafbedff2ad394084d5fd6222b3",
+    "semantic_hash": ""
+  },
+  "tests/test_rag_chunker.py": {
+    "mtime": 1789621238.2686079,
+    "seen": 1789664145.5190089,
+    "ast_hash": "30a30b5c0202ac79315ba8fdaf9b16c5",
+    "semantic_hash": ""
+  },
+  "tests/test_schemas.py": {
+    "mtime": 1789621123.6018233,
+    "seen": 1789664145.5190103,
+    "ast_hash": "ed2015b0ef6111ccc25c6fc4b66eb52b",
+    "semantic_hash": ""
+  },
+  "tests/test_storage.py": {
+    "mtime": 1789621202.370382,
+    "seen": 1789664145.5190115,
+    "ast_hash": "b2f8e65fdeb30c24111825fd84bcd8d7",
+    "semantic_hash": ""
+  },
+  "data/pdfs/IS_10500_2012.pdf": {
+    "mtime": 1789638856.546179,
+    "seen": 1789664145.5190132,
+    "ast_hash": "b6a7e672e96c52754515872011ee0a9e",
+    "semantic_hash": ""
+  },
+  "data/pdfs/IS_13920_1993.pdf": {
+    "mtime": 1789638873.9733818,
+    "seen": 1789664145.5190146,
+    "ast_hash": "ab2fc31e987a82f3e8918566ddf4a2d1",
+    "semantic_hash": ""
+  },
+  "data/pdfs/IS_1786_2008.pdf": {
+    "mtime": 1789638846.9174316,
+    "seen": 1789664145.5190163,
+    "ast_hash": "7ab2a3e962a48dfbb3b2b274c345c79e",
+    "semantic_hash": ""
+  },
+  "data/pdfs/IS_2062_2011.pdf": {
+    "mtime": 1789638869.524486,
+    "seen": 1789664145.5190177,
+    "ast_hash": "2313d5bb39ec6303a3e74620cfa8c1e9",
+    "semantic_hash": ""
+  },
+  "data/pdfs/IS_456_2000.pdf": {
+    "mtime": 1789638863.2947698,
+    "seen": 1789664145.5190196,
+    "ast_hash": "fdb248bbfae1c756130648bccfb4d6aa",
+    "semantic_hash": ""
+  }
+}

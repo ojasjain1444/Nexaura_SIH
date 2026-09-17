@@ -1,0 +1,183 @@
+# =============================================================================
+# Nexaura — Central Configuration
+# Project: SIH 2026 — Problem Statement SIH26107
+# AI Assistant for Indian Standards and BIS Services
+#
+# This file is shared between:
+#   - bis_ingestion/  (existing metadata crawler)
+#   - nexaura/        (PDF intelligence pipeline — new)
+#
+# Secrets (API keys, passwords) are NEVER stored here.
+# Use .env for all secrets. This file is safe to commit.
+# =============================================================================
+
+# =============================================================================
+# BIS METADATA INGESTION (existing bis_ingestion/ system)
+# =============================================================================
+
+bis_ingestion:
+  request_delay_min: 1.0
+  request_delay_max: 2.5
+  request_timeout: 30
+  max_retries: 3
+  retry_backoff_base: 2.0
+  lims_page_size: 50
+  test_crawl_limit: 50
+  lims_is_start: 1
+  lims_is_end: 500
+
+
+# =============================================================================
+# NEXAURA PDF INTELLIGENCE PIPELINE (new nexaura/ system)
+# =============================================================================
+
+nexaura:
+
+  # ---------------------------------------------------------------------------
+  # Gemini Flash Document Intelligence
+  # ---------------------------------------------------------------------------
+  gemini:
+    # Model name MUST be set via GEMINI_MODEL env var.
+    # This is the fallback default only — always prefer the env var.
+    model: "gemini-2.0-flash"               # override with GEMINI_MODEL env var
+    temperature: 0.0                         # deterministic output
+    max_output_tokens: 8192
+    max_retries: 5                           # retry on transient API failures
+    retry_backoff_base: 2.0                  # exponential backoff base (seconds)
+    retry_backoff_max: 60.0                  # max backoff cap
+    request_timeout: 120                     # seconds per Gemini call
+    batch_size: 1                            # pages per Gemini call (1 = full PDF)
+    max_concurrent_requests: 2              # parallel Gemini requests
+    cache_responses: true                    # cache by page hash — avoids re-calls
+    cache_dir: "nexaura/data/cache/gemini"
+
+  # ---------------------------------------------------------------------------
+  # PDF Detection & Text Extraction
+  # ---------------------------------------------------------------------------
+  pdf:
+    # Minimum character count on a page to consider it as having a text layer.
+    # Pages below this threshold are sent to Gemini.
+    text_threshold: 50
+
+    # If true: send ALL pages to Gemini regardless of text layer presence.
+    # WARNING: significantly increases API usage and cost.
+    force_gemini: false
+
+    # Confidence threshold below which a page is flagged needs_review.
+    min_ocr_confidence: 0.70
+
+  # ---------------------------------------------------------------------------
+  # Embeddings
+  # ---------------------------------------------------------------------------
+  embeddings:
+    # Provider: "sentence_transformers" (local/offline) or "google" (online)
+    provider: "sentence_transformers"
+
+    # sentence_transformers model (used when provider = sentence_transformers)
+    model: "all-MiniLM-L6-v2"              # 384-dim, fast, offline
+
+    # Google embedding model (used when provider = google)
+    google_model: "text-embedding-004"      # requires GEMINI_API_KEY
+
+    # Batch size for embedding generation
+    batch_size: 32
+
+    # Normalize vectors before storing
+    normalize: true
+
+  # ---------------------------------------------------------------------------
+  # Qdrant Vector Database
+  # ---------------------------------------------------------------------------
+  qdrant:
+    # URL set via QDRANT_URL env var; this is the local default
+    url: "http://localhost:6333"
+    collection: "bis_knowledge"
+    vector_size: 384                         # must match embedding model dim
+    distance: "Cosine"                       # Cosine | Dot | Euclid
+    on_disk: true                            # persist vectors to disk
+
+  # ---------------------------------------------------------------------------
+  # MongoDB Database (KnowledgeBase)
+  # ---------------------------------------------------------------------------
+  mongodb:
+    # Full connection URI set via MONGO_URL / MONGODB_URL env var
+    url: "mongodb://localhost:27017"
+    db_name: "nexaura"
+    server_selection_timeout_ms: 5000
+
+  # ---------------------------------------------------------------------------
+  # Feature-Based Similarity Search
+  # ---------------------------------------------------------------------------
+  search:
+    top_k: 10                               # default number of results
+
+    # Configurable weighted ranking (must sum to 1.0)
+    # These are initial engineering defaults, not claimed optimal values.
+    weights:
+      semantic:            0.40
+      keyword:             0.20
+      scope:               0.15
+      product_application: 0.10
+      technical:           0.10
+      metadata:            0.05
+
+    # BM25 index location
+    bm25_index_path: "nexaura/data/embeddings/bm25_index.pkl"
+
+    # Minimum score threshold to include in results
+    min_score: 0.20
+
+  # ---------------------------------------------------------------------------
+  # Pipeline Processing
+  # ---------------------------------------------------------------------------
+  processing:
+    # Number of parallel worker processes for PDF ingestion
+    workers: 4
+
+    # Resume from last successful checkpoint on restart
+    resume: true
+
+    # Checkpoint directory
+    checkpoint_dir: "nexaura/data/checkpoints"
+
+    # Hash algorithm for file/page dedup
+    hash_algorithm: "xxhash"               # xxhash | sha256
+
+    # Batch size for database inserts
+    db_batch_size: 50
+
+    # Batch size for Qdrant upserts
+    qdrant_batch_size: 100
+
+  # ---------------------------------------------------------------------------
+  # Output Paths
+  # ---------------------------------------------------------------------------
+  output:
+    processed_dir:   "nexaura/data/processed"
+    embeddings_dir:  "nexaura/data/embeddings"
+    logs_dir:        "nexaura/data/logs"
+    cache_dir:       "nexaura/data/cache"
+    raw_dir:         "nexaura/data/raw"
+
+    # Output JSONL files
+    documents_jsonl:       "nexaura/data/processed/documents.jsonl"
+    clauses_jsonl:         "nexaura/data/processed/clauses.jsonl"
+    tables_jsonl:          "nexaura/data/processed/tables.jsonl"
+    features_jsonl:        "nexaura/data/processed/features.jsonl"
+    metadata_json:         "nexaura/data/processed/metadata.json"
+    knowledge_graph_json:  "nexaura/data/processed/knowledge_graph.json"
+    processing_report:     "nexaura/data/processed/processing_report.json"
+
+    # Log files
+    ingestion_log:         "nexaura/data/logs/ingestion.log"
+    failed_files_jsonl:    "nexaura/data/logs/failed_files.jsonl"
+    low_confidence_jsonl:  "nexaura/data/logs/low_confidence.jsonl"
+
+  # ---------------------------------------------------------------------------
+  # Logging
+  # ---------------------------------------------------------------------------
+  logging:
+    level: "INFO"                           # DEBUG | INFO | WARNING | ERROR
+    format: "%(asctime)s | %(levelname)-8s | %(name)s | %(message)s"
+    console: true
+    file: true

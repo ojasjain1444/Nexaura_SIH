@@ -1,0 +1,52 @@
+# Nexaura .gitignore
+
+# Secrets — NEVER commit
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# pytest
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Data — large files, raw PDFs, processed outputs
+nexaura/data/raw/
+nexaura/data/cache/
+nexaura/data/checkpoints/
+nexaura/data/embeddings/*.pkl
+nexaura/data/processed/*.jsonl
+nexaura/data/logs/
+
+# DB files
+bis_ingestion/data/*.db
+bis_ingestion/data/*.csv
+
+# Docker volumes
+.docker/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db

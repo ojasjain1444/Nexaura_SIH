@@ -1,0 +1,55 @@
+version: "3.9"
+
+# =============================================================================
+# Nexaura — Docker Compose
+# Starts: PostgreSQL + Qdrant
+#
+# Usage:
+#   docker-compose up -d
+#   docker-compose down
+#   docker-compose logs -f
+# =============================================================================
+
+services:
+
+  # ---------------------------------------------------------------------------
+  # MongoDB — Structural & Metadata Database (KnowledgeBase)
+  # ---------------------------------------------------------------------------
+  mongodb:
+    image: mongo:latest
+    container_name: nexaura_mongodb
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - nexaura_mongo_data:/data/db
+    healthcheck:
+      test: ["CMD-SHELL", "mongosh --eval 'db.runCommand({ping: 1})' || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ---------------------------------------------------------------------------
+  # Qdrant — Vector database for semantic search
+  # ---------------------------------------------------------------------------
+  qdrant:
+    image: qdrant/qdrant:latest
+    container_name: nexaura_qdrant
+    restart: unless-stopped
+    ports:
+      - "6333:6333"   # REST API
+      - "6334:6334"   # gRPC
+    volumes:
+      - nexaura_qdrant_data:/qdrant/storage
+    environment:
+      QDRANT__SERVICE__HTTP_PORT: 6333
+      QDRANT__SERVICE__GRPC_PORT: 6334
+    healthcheck:
+      test: ["CMD-SHELL", "curl -sf http://localhost:6333/healthz || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  nexaura_mongo_data:
+  nexaura_qdrant_data:

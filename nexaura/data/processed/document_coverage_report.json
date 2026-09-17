@@ -1,0 +1,22 @@
+{
+  "total_standards_audited": 1,
+  "coverage": [
+    {
+      "standard_number": "unknown",
+      "expected_documents": [
+        "Main Standard",
+        "Amendment(s)",
+        "Product Manual",
+        "STI"
+      ],
+      "discovered_documents": 5,
+      "downloaded_documents": 5,
+      "failed_documents": 0,
+      "metadata_only_documents": 0,
+      "availability": "complete",
+      "document_breakdown": {
+        "main_standard": 5
+      }
+    }
+  ]
+}
