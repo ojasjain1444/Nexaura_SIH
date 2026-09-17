@@ -27,17 +27,11 @@ htmlcov/
 # Jupyter
 .ipynb_checkpoints/
 
-# Data — large files, raw PDFs, processed outputs
+# Data — raw PDFs and temporary cache
 nexaura/data/raw/
 nexaura/data/cache/
 nexaura/data/checkpoints/
-nexaura/data/embeddings/*.pkl
-nexaura/data/processed/*.jsonl
 nexaura/data/logs/
-
-# DB files
-bis_ingestion/data/*.db
-bis_ingestion/data/*.csv
 
 # Docker volumes
 .docker/
