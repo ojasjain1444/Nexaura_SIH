@@ -3,35 +3,44 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nexaura — AI Technical Compliance & Indian Standards Assistant</title>
-  <meta name="description" content="Intelligent RAG Retrieval & Compliance Verification System for Indian Standards (BIS - Bureau of Indian Standards).">
+  <title>Bureau of Indian Standards (BIS) — Nexaura Smart AI Compliance Portal</title>
+  <meta name="description" content="Official Bureau of Indian Standards (BIS - भारतीय मानक ब्यूरो) RAG Retrieval & AI Compliance Verification Portal.">
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <!-- Custom CSS -->
+  <!-- Custom BIS CSS -->
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <!-- Top Indian Flag Tricolor Bar -->
+  <div class="tricolor-bar"></div>
+
   <div class="app-container">
     <!-- Sidebar Navigation -->
     <aside class="sidebar">
       <div class="brand-header">
-        <div class="brand-icon">
-          <i class="fa-solid fa-atom"></i>
+        <div class="bis-emblem-container">
+          <div class="brand-icon">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+          <div class="isi-badge-dot">ISI</div>
         </div>
         <div class="brand-text">
           <h1>NEXAURA</h1>
-          <div class="brand-tag">SIH 2026 • SIH26107</div>
+          <div class="brand-hindi">भारतीय मानक ब्यूरो</div>
+          <div class="brand-motto">मानकः पथप्रदर्शकः</div>
         </div>
       </div>
 
       <nav class="nav-menu">
+        <div class="nav-section-title">BIS Smart Portals</div>
+
         <div class="nav-item active" data-tab="rag">
           <i class="fa-solid fa-wand-magic-sparkles"></i>
-          <span>RAG Compliance Assistant</span>
+          <span>Manak AI RAG Assistant</span>
         </div>
         <div class="nav-item" data-tab="standards">
           <i class="fa-solid fa-book-bookmark"></i>
@@ -39,7 +48,7 @@
         </div>
         <div class="nav-item" data-tab="labs">
           <i class="fa-solid fa-flask-vial"></i>
-          <span>Testing Laboratories</span>
+          <span>LIMS Laboratory Network</span>
         </div>
         <div class="nav-item" data-tab="analytics">
           <i class="fa-solid fa-chart-pie"></i>
@@ -49,8 +58,8 @@
 
       <div class="sidebar-footer">
         <div class="sih-badge">
-          <div class="sih-badge-title">Smart India Hackathon</div>
-          <div class="sih-badge-desc">Problem SIH26107 Engine</div>
+          <div class="sih-badge-title">Smart India Hackathon 2026</div>
+          <div class="sih-badge-desc">Problem SIH26107 Portal Engine</div>
         </div>
       </div>
     </aside>
@@ -59,9 +68,15 @@
     <div class="main-wrapper">
       <!-- Topbar Header -->
       <header class="topbar">
-        <div class="page-header">
-          <h2 id="page-title">RAG Compliance Assistant</h2>
-          <p id="page-subtitle">Ask any question regarding Indian Standards, material specs, or hygiene norms</p>
+        <div class="page-header-container">
+          <div class="bis-gov-badge">
+            <i class="fa-solid fa-building-columns"></i>
+            <span>Govt of India • BIS Portal</span>
+          </div>
+          <div class="page-header">
+            <h2 id="page-title">Manak AI RAG Assistant</h2>
+            <p id="page-subtitle">Intelligent Query & Compliance Engine for Official Indian Standards (IS Codes)</p>
+          </div>
         </div>
 
         <div class="topbar-actions">
@@ -75,6 +90,14 @@
         </div>
       </header>
 
+      <!-- Announcement Ticker Marquee -->
+      <div class="ticker-bar">
+        <div class="ticker-label">BIS Notice</div>
+        <div class="ticker-text">
+          SIH26107: Real-Time RAG Compliance Engine synchronized with 714 Indian Standards & 87 BIS Recognized Laboratories.
+        </div>
+      </div>
+
       <!-- Main Scrollable Content Area -->
       <main class="content-area">
         <!-- Live System Metrics Hero Cards -->
@@ -85,7 +108,7 @@
             </div>
             <div>
               <div class="stat-value" id="stat-standards">714</div>
-              <div class="stat-label">Indian Standards</div>
+              <div class="stat-label">Indian Standards (IS)</div>
             </div>
           </div>
 
@@ -95,7 +118,7 @@
             </div>
             <div>
               <div class="stat-value" id="stat-chunks">1,840</div>
-              <div class="stat-label">RAG Text Chunks</div>
+              <div class="stat-label">Vector RAG Chunks</div>
             </div>
           </div>
 
@@ -115,7 +138,7 @@
             </div>
             <div>
               <div class="stat-value" id="stat-labs">87</div>
-              <div class="stat-label">Accredited BIS Labs</div>
+              <div class="stat-label">LIMS Recognized Labs</div>
             </div>
           </div>
         </div>
@@ -123,19 +146,29 @@
         <!-- TAB 1: RAG ASSISTANT -->
         <section id="tab-rag" class="tab-view active">
           <div class="rag-workspace">
+            <!-- BIS Department Quick Filters -->
+            <div class="dept-pills-bar">
+              <span style="font-size: 0.8rem; color: var(--text-dim); font-weight: 600; margin-right: 0.4rem;">BIS Division:</span>
+              <div class="dept-pill active" data-dept="ALL">All Departments</div>
+              <div class="dept-pill" data-dept="FAD">FAD (Food & Agriculture)</div>
+              <div class="dept-pill" data-dept="CED">CED (Civil Engineering)</div>
+              <div class="dept-pill" data-dept="MTD">MTD (Metallurgical)</div>
+              <div class="dept-pill" data-dept="ETD">ETD (Electrotechnical)</div>
+            </div>
+
             <!-- Query Entry Box -->
             <div class="query-card">
               <div class="query-header">
                 <div class="query-title">
                   <i class="fa-solid fa-magnifying-glass"></i>
-                  <span>Enter Technical Query or Compliance Requirement</span>
+                  <span>खोजें एवं जानें / Enter Technical Query or Standard Requirement</span>
                 </div>
               </div>
 
               <!-- Preset Sample Query Quick Pills -->
               <div class="preset-pills">
                 <div class="preset-pill" data-query="What are the essential hygiene and water quality standards for a college canteen?">
-                  <i class="fa-solid fa-utensils"></i> College Canteen & Hygiene Standards
+                  <i class="fa-solid fa-utensils"></i> Canteen Hygiene & Water Standards
                 </div>
                 <div class="preset-pill" data-query="What are the permissible limits for pH, Turbidity, and Dissolved Solids under IS 10500 drinking water standard?">
                   <i class="fa-solid fa-droplet"></i> Drinking Water Limits (IS 10500)
@@ -143,23 +176,23 @@
                 <div class="preset-pill" data-query="What are the storage, handling, and tensile strength specifications for structural steel bars under IS 2062 and IS 1786?">
                   <i class="fa-solid fa-cubes"></i> Steel Bar Specifications (IS 2062)
                 </div>
-                <div class="preset-pill" data-query="Find accredited laboratories testing drinking water and structural steel in Delhi/NCR region.">
-                  <i class="fa-solid fa-building-columns"></i> BIS Accredited Labs Directory
+                <div class="preset-pill" data-query="Find accredited laboratories testing drinking water and structural steel in Delhi NCR region.">
+                  <i class="fa-solid fa-building-columns"></i> BIS LIMS Testing Labs Network
                 </div>
               </div>
 
               <!-- Query Input Row -->
               <form id="rag-form" class="input-group">
-                <input type="text" id="query-input" class="query-input" placeholder="e.g. What is the maximum turbidity allowed in drinking water under IS 10500?" required autocomplete="off">
+                <input type="text" id="query-input" class="query-input" placeholder="e.g. What is the maximum permissible turbidity in drinking water under IS 10500?" required autocomplete="off">
                 <button type="submit" id="btn-submit" class="btn-primary">
                   <i class="fa-solid fa-paper-plane"></i>
-                  <span>Query AI</span>
+                  <span>Query AI Portal</span>
                 </button>
               </form>
 
               <div class="query-controls">
                 <div class="control-item">
-                  <label for="top-k-select">Top-K Context Chunks:</label>
+                  <label for="top-k-select">Context Retrieval Top-K:</label>
                   <select id="top-k-select">
                     <option value="3">3 Chunks</option>
                     <option value="5" selected>5 Chunks (Recommended)</option>
@@ -167,7 +200,7 @@
                   </select>
                 </div>
                 <div class="control-item">
-                  <label for="filter-std-input">Filter Standard No:</label>
+                  <label for="filter-std-input">Target IS Code:</label>
                   <input type="text" id="filter-std-input" placeholder="e.g. IS 10500 (Optional)">
                 </div>
               </div>
@@ -177,11 +210,11 @@
             <div id="results-card" class="results-card">
               <div class="answer-header">
                 <div class="answer-title">
-                  <i class="fa-solid fa-robot"></i>
-                  <span>Grounded Answer Synthesis</span>
+                  <i class="fa-solid fa-shield-check" style="color: var(--primary-cyan);"></i>
+                  <span>BIS Grounded Compliance Analysis</span>
                 </div>
-                <div id="confidence-badge" class="confidence-badge">
-                  <i class="fa-solid fa-shield-check"></i> High Grounding Confidence (96%)
+                <div id="confidence-badge" class="bis-stamp-badge">
+                  <i class="fa-solid fa-circle-check"></i> Official BIS Standard Grounded (96%)
                 </div>
               </div>
 
@@ -192,11 +225,11 @@
               <!-- Cited IS Standards & Chunks Grid -->
               <div class="citations-section">
                 <div class="section-label">
-                  <i class="fa-solid fa-quote-left"></i>
-                  <span>Retrieved Context Chunks & IS Citations</span>
+                  <i class="fa-solid fa-certificate" style="color: var(--bis-gold);"></i>
+                  <span>Retrieved IS Clauses & Document Evidence</span>
                 </div>
                 <div id="citations-grid" class="citations-grid">
-                  <!-- Citation Cards will be populated here -->
+                  <!-- Citation Cards populated dynamically -->
                 </div>
               </div>
             </div>
@@ -207,7 +240,7 @@
         <section id="tab-standards" class="tab-view">
           <div class="table-card">
             <div class="table-controls">
-              <input type="text" id="standards-search" class="search-input" placeholder="Filter by Title or Standard No (e.g. IS 456, IS 10500)...">
+              <input type="text" id="standards-search" class="search-input" placeholder="Filter by Title or IS Code (e.g. IS 456, IS 10500)...">
               <div class="control-item">
                 <label>Status Filter:</label>
                 <select id="status-filter">
@@ -221,16 +254,16 @@
             <table class="custom-table">
               <thead>
                 <tr>
-                  <th>Standard No.</th>
-                  <th>Title</th>
-                  <th>Department</th>
+                  <th>IS Code No.</th>
+                  <th>Standard Title</th>
+                  <th>Division</th>
                   <th>Status</th>
-                  <th>PDF Available</th>
+                  <th>Specification</th>
                   <th>Action</th>
                 </tr>
               </thead>
               <tbody id="standards-tbody">
-                <!-- Table rows populated dynamically -->
+                <!-- Rows populated dynamically -->
               </tbody>
             </table>
           </div>
@@ -240,7 +273,7 @@
         <section id="tab-labs" class="tab-view">
           <div class="table-card">
             <div class="table-controls">
-              <input type="text" id="labs-search" class="search-input" placeholder="Search testing labs by city, state, or material (e.g. Delhi, Water, Steel)...">
+              <input type="text" id="labs-search" class="search-input" placeholder="Search LIMS laboratories by city, state, or material (e.g. Delhi, Water, Steel)...">
             </div>
 
             <table class="custom-table">
@@ -263,29 +296,29 @@
         <!-- TAB 4: SYSTEM & INVENTORY ANALYTICS -->
         <section id="tab-analytics" class="tab-view">
           <div class="table-card">
-            <h3 style="font-family: var(--font-heading); margin-bottom: 1rem; color: var(--primary-cyan);">
-              <i class="fa-solid fa-database"></i> Database & Document Ingestion Overview
+            <h3 style="font-family: var(--font-heading); margin-bottom: 1rem; color: #93c5fd;">
+              <i class="fa-solid fa-server"></i> BIS AI Compliance Engine Architecture
             </h3>
             <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">
-              Nexaura uses a dual BM25 + Vector Hybrid Index backed by MongoDB. All 714 official standards and 212 technical features are synchronized.
+              Nexaura utilizes a dual BM25 + Vector Hybrid Retrieval pipeline backed by MongoDB and Gemini 2.0. All 714 official standards and 212 technical parameters are synchronized.
             </p>
 
             <div class="citations-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
               <div class="citation-card" style="cursor: default;">
-                <div class="citation-std"><i class="fa-solid fa-server"></i> Database Target</div>
+                <div class="citation-std"><i class="fa-solid fa-database"></i> Database Infrastructure</div>
                 <div class="citation-snippet" style="margin-top: 0.5rem; -webkit-line-clamp: 10;">
-                  MongoDB instance: <code>localhost:27017</code><br>
+                  Target Host: <code>localhost:27017</code><br>
                   Active Database: <code>nexaura</code><br>
                   Collections: <code>standards</code>, <code>rag_chunks</code>, <code>features</code>, <code>labs</code>, <code>documents</code>
                 </div>
               </div>
 
               <div class="citation-card" style="cursor: default;">
-                <div class="citation-std"><i class="fa-solid fa-brain"></i> Similarity & Search Engine</div>
+                <div class="citation-std"><i class="fa-solid fa-brain"></i> Hybrid Retrieval Engine</div>
                 <div class="citation-snippet" style="margin-top: 0.5rem; -webkit-line-clamp: 10;">
-                  Retrieval Model: SimpleBM25Okapi + TF-IDF Vector Hybrid<br>
+                  Retrieval Model: SimpleBM25Okapi + TF-IDF Hybrid<br>
                   Synthesis LLM: <code>gemini-2.0-flash</code><br>
-                  Feature Extraction: 212 parameters with numeric bounds & units
+                  Feature Bounds: 212 parameters with numerical units
                 </div>
               </div>
             </div>
