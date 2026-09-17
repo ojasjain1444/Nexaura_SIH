@@ -18,6 +18,28 @@ document.addEventListener('DOMContentLoaded', () => {
   const backendStatusPill = document.getElementById('backend-status');
   const statusText = document.getElementById('status-text');
   const btnRefresh = document.getElementById('btn-refresh');
+  const themeToggle = document.getElementById('theme-toggle');
+  const themeToggleText = document.getElementById('theme-toggle-text');
+
+  // Load saved theme preference
+  const savedTheme = localStorage.getItem('nexaura_theme');
+  if (savedTheme === 'dark') {
+    document.body.classList.add('dark-theme');
+    if (themeToggle) {
+      themeToggle.innerHTML = `<i class="fa-solid fa-sun"></i><span>Light Mode</span>`;
+    }
+  }
+
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-theme');
+      const isDark = document.body.classList.contains('dark-theme');
+      localStorage.setItem('nexaura_theme', isDark ? 'dark' : 'light');
+      themeToggle.innerHTML = isDark 
+        ? `<i class="fa-solid fa-sun"></i><span>Light Mode</span>`
+        : `<i class="fa-solid fa-moon"></i><span>Dark Mode</span>`;
+    });
+  }
 
   const statStandards = document.getElementById('stat-standards');
   const statChunks = document.getElementById('stat-chunks');
