@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  /* Apple-style light theme: a neutral gray scale for structure/text
+     (never used for interactive affordances on its own) plus one
+     restrained blue accent reserved exclusively for interactive elements
+     — matching Apple's own documented pattern (systemBlue #0071e3 used
+     only for links/buttons, appearing sparingly against near-white
+     backgrounds, per apple.com's own design system). */
+  --color-brand-50: #f5f5f7;
+  --color-brand-100: #e8e8ed;
+  --color-brand-200: #d2d2d7;
+  --color-brand-300: #aeaeb2;
+  --color-brand-400: #8e8e93;
+  --color-brand-500: #6e6e73;
+  --color-brand-600: #48484a;
+  --color-brand-700: #363638;
+  --color-brand-800: #232325;
+  --color-brand-900: #1d1d1f;
+
+  /* Apple's systemBlue — the one accent color, reserved for interactive
+     elements only (buttons, links, active states) so it stays meaningful. */
+  --color-accent-50: #eef6ff;
+  --color-accent-100: #d9ebff;
+  --color-accent-200: #b3d7ff;
+  --color-accent-300: #7dbaff;
+  --color-accent-400: #3395ff;
+  --color-accent-500: #0071e3;
+  --color-accent-600: #0068d1;
+  --color-accent-700: #0058b0;
+
+  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  /* Subtle, close-in shadows — Apple's own UI uses very restrained
+     elevation (thin hairline borders do most of the separation work),
+     not dramatic drop shadows. */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.03);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04), 0 2px 6px rgba(0, 0, 0, 0.03);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.05), 0 2px 4px rgba(0, 0, 0, 0.03);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.04);
+  --shadow-glow: 0 0 0 1px rgba(0, 113, 227, 0.08), 0 4px 16px rgba(0, 113, 227, 0.16);
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #fbfbfd;
+  color: #1d1d1f;
+  font-feature-settings: 'ss01' 1, 'cv05' 1;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #94a3b8;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent-500);
+  outline-offset: 2px;
+}
+
+/* AssistantPage's chat container: 100vh on mobile browsers includes the
+   address bar's variable space, which shrinks/grows as the page scrolls
+   and clips fixed-height content (confirmed via a real mobile-viewport
+   screenshot: both the top of the quick-topics list and the message
+   composer were cut off). 100dvh (dynamic viewport height) is the
+   standard fix, with the 100vh rule kept first as a fallback for browsers
+   that don't support dvh yet. */
+.chat-viewport {
+  height: calc(100vh - 7rem);
+  height: calc(100dvh - 7rem);
+}

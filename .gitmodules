@@ -1,0 +1,3 @@
+[submodule "mobile"]
+	path = mobile
+	url = https://github.com/ojasjain1444/Nexaura_Mobile.git

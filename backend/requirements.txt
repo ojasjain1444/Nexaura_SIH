@@ -1,0 +1,27 @@
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+pydantic==2.10.4
+pydantic-settings==2.7.0
+SQLAlchemy==2.0.36
+alembic==1.14.0
+pytest==8.3.4
+httpx==0.28.1
+
+# Phase 3 — document ingestion / OCR
+pymupdf==1.28.2
+pytesseract==0.3.13
+Pillow==12.3.0
+python-multipart==0.0.32
+# Requires the Tesseract OCR *binary* to be installed separately
+# (not a pip package): `brew install tesseract` on macOS.
+
+# Phase 4 — embeddings / vector search
+# Local embedding model: intfloat/multilingual-e5-small (384 dims, ~470MB,
+# downloaded on first use and cached in ~/.cache/huggingface). See
+# docs/RAG_RETRIEVAL.md for why this model was chosen and how it was tested.
+sentence-transformers==6.0.1
+
+# Phase 5 — grounded chat / RAG answer generation
+# Real LLM provider (only used when LLM_PROVIDER=anthropic and LLM_API_KEY
+# is set). See docs/CHAT_RAG.md — NOT tested with a real key in this phase.
+anthropic==1.6.0
